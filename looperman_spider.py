@@ -7,7 +7,14 @@ import os
 starturl = 'http://www.looperman.com/loops?page=1&keys=drums&dir=d'
 
 
-driver = webdriver.Firefox()
+fp = webdriver.FirefoxProfile()
+
+fp.set_preference("browser.download.folderList",2)
+fp.set_preference("browser.download.manager.showWhenStarting",False)
+fp.set_preference("browser.download.dir", os.getcwd())
+fp.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/x-msdos-program")
+
+driver = webdriver.Firefox(firefox_profile=fp)
 
 for i in range(13):
     cururl = starturl + str(i+1) + '/'
@@ -36,7 +43,8 @@ def save_file( url, file_name):  ##保存图片
         f.write(file.content)
         print(file_name, '图片保存成功！')
         f.close()       
-
+#elem = driver.find_element_by_class_name('btn-download')
+#elem.click()
 
 def request(url):  # 封装的requests 请求
         r = requests.get(url)  # 像目标url地址发送get请求，返回一个response对象。有没有headers参数都可以。
