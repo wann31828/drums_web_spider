@@ -54,7 +54,7 @@ def request(url):  # 封装的requests 请求
 
 def FindAndDownloadFilesByBrowserClick():
     for i in range(50):
-        cururl = firsturl + str(i+20) + posturl
+        cururl = firsturl + str(i) + posturl
         print('currenturl:' + cururl)
         driver.get(cururl)
         html = driver.page_source
@@ -65,12 +65,13 @@ def FindAndDownloadFilesByBrowserClick():
                 driver.get(div['href'])
                 elem = driver.find_element_by_class_name('btn-download')
                 elem.click()
-                time.sleep(15)
+                time.sleep(10)
 
 def  rename(path):
     os.chdir(path)
+    pat = re.compile('looperman-l-(\\w+-){3}')
     for name in os.listdir() :        
-        if len(re.split(pat,name)) == 3
+        if len(re.split(pat,name)) == 3:
             print('current name:' + name)
             newname = re.split(pat,name)[2]
             print('new name:' + newname)
