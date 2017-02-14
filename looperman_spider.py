@@ -18,6 +18,7 @@ fp.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/x-msdos
 
 driver = webdriver.Firefox(firefox_profile=fp)
 
+'''
 def findAndDownloadFiles():
     for i in range(13):
         cururl = firsturl + str(i+1) + posturl
@@ -45,12 +46,11 @@ def save_file( url, file_name):  ##保存图片
         f.write(file.content)
         print(file_name, '图片保存成功！')
         f.close()       
-#elem = driver.find_element_by_class_name('btn-download')
-#elem.click()
 
 def request(url):  # 封装的requests 请求
         r = requests.get(url)  # 像目标url地址发送get请求，返回一个response对象。有没有headers参数都可以。
         return r        
+'''
 
 def FindAndDownloadFilesByBrowserClick():
     for i in range(50):
